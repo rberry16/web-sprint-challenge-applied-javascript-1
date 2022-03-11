@@ -1,3 +1,5 @@
+import { Header, headerAppender } from "./header";
+import axios from 'axios';
 const Tabs = (topics) => {
   // TASK 3
   // ---------------------
@@ -13,9 +15,22 @@ const Tabs = (topics) => {
   //   <div class="tab">technology</div>
   // </div>
   //
+  const topicsWrapper = document.createElement('div');
+
+  function tabsMaker(array) {
+   for (let i = 0; i < array.length; i++){
+    const tab = document.createElement('div');
+    tab.textContent = array[i];
+    topicsWrapper.appendChild(tab);
+   }
+  }
+  tabsMaker(topics);
+
+  return topicsWrapper;
 }
 
-const tabsAppender = (selector) => {
+
+function tabsAppender(selector) {
   // TASK 4
   // ---------------------
   // Implement this function which takes a css selector as its only argument.

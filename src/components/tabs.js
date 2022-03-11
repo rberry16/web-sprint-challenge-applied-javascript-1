@@ -17,15 +17,17 @@ const Tabs = (topics) => {
   //
   const topicsWrapper = document.createElement('div');
 
-  function tabsMaker(array) {
-   for (let i = 0; i < array.length; i++){
-    const tab = document.createElement('div');
-    tab.textContent = array[i];
-    topicsWrapper.appendChild(tab);
-   }
+  function tabsMaker(listItem) {
+    const topic = document.createElement('div');
+    topic.textContent = listItem;
+    topic.classList.add('tab');
+    topicsWrapper.appendChild(topic);
   }
-  tabsMaker(topics);
-
+   
+  for (let i = 0; i < topics.length; i++) {
+    tabsMaker(topics[i])
+  }
+  topicsWrapper.classList.add('topics')
   return topicsWrapper;
 }
 
@@ -38,6 +40,16 @@ function tabsAppender(selector) {
   // Find the array of topics inside the response, and create the tabs using the Tabs component.
   // Append the tabs to the element in the DOM that matches the selector passed to the function.
   //
+  axios.get('http://localhost:5001/api/topics')
+  .then(res => {
+    document.querySelector(selector).appendChild(Tabs(res.data.topics));
+    console.log(res.data);
+  })
+  .catch(err => {
+    console.error(err)
+  })
 }
+
+
 
 export { Tabs, tabsAppender }

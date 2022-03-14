@@ -40,7 +40,8 @@ const Card = (article) => {
   cardWrapper.classList.add('card');
   headline.classList.add('headline');
   author.classList.add('author');
-  img.classList.add('img-container')
+  imgContainer.classList.add('img-container');
+  img.classList.add('img')
 
 
   cardWrapper.addEventListener('click', () => {

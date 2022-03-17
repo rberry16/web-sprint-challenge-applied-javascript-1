@@ -1,4 +1,3 @@
-import { Header, headerAppender } from "./header";
 import axios from 'axios';
 const Tabs = (topics) => {
   // TASK 3

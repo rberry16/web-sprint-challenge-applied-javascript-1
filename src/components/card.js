@@ -79,11 +79,4 @@ const cardAppender = (selector) => {
     }
   })
 }
-axios.get('http://localhost:5001/api/articles')
-  .then(res => {
-    console.log(res.data.articles)
-  })
-  .catch(err => {
-    console.error(err);
-  })
 export { Card, cardAppender }

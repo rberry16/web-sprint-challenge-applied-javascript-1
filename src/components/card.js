@@ -61,16 +61,14 @@ const cardAppender = (selector) => {
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
   axios.get('http://localhost:5001/api/articles')
-  .then(res => {
-    const articlesArray = Object.values(res.data.articles);
-    const articleAppender = (array) => {
-      for (let i = 0; i < array.length; i++) {
-        document.querySelector(selector).appendChild(Card(array[i]));
+    .then(res => {
+      const articlesArray = Object.values(res.data.articles);
+      function articleAppender(array) {
+        for (let i = 0; i < array.length; i++){
+          document.querySelector(selector).appendChild(Card(array[i]));
+        }
       }
-    }
-    for (let i = 0; i < articlesArray.length; i++) {
-      articleAppender(articlesArray[i]);
-    }
-  })
+      articlesArray.forEach(articleAppender);
+    })
 }
 export { Card, cardAppender }
